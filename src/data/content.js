@@ -17,6 +17,10 @@ export const IMAGES = {
     src: P("classroom"),
     alt: "A Montessori practical-life session at Kayo International Preschool, with child-friendly learning materials on open shelves",
   },
+  ourStory: {
+    src: asset("/media/photos/our-story.webp"),
+    alt: "Kayo International children celebrating Yellow Day together at the Perungudi campus",
+  },
   learning: {
     src: P("learning"),
     alt: "A child building words on a phonics board with a teacher at Kayo International Preschool, Chennai",

@@ -25,7 +25,9 @@ jobs:
           node-version: 20
           cache: npm
 
-      - run: npm ci
+      # `npm ci` demands an exact lockfile match, but a Windows-generated
+      # lock omits Linux-only optional binaries. Resolve per-platform instead.
+      - run: npm install --no-audit --no-fund
 
       - name: Build
         env:

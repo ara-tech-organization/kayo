@@ -67,17 +67,15 @@ export default function About() {
         <Container size="wide">
           <div className={styles.storyGrid}>
             <Reveal variant="right" duration={0.9} className={styles.storyMedia}>
-              <Figure
-                src={IMAGES.learning.src}
-                alt={IMAGES.learning.alt}
-                ratio="4 / 5"
-                rounded="xl"
-                sizes="(max-width: 980px) 100vw, 45vw"
+              <img
+                src={IMAGES.ourStory.src}
+                alt={IMAGES.ourStory.alt}
+                className={styles.storyImg}
+                width="1127"
+                height="894"
+                loading="lazy"
+                decoding="async"
               />
-              <span className={styles.storyBadge}>
-                <span className={styles.storyBadgeValue}>2013</span>
-                <span className={styles.storyBadgeLabel}>Founded in Perungudi</span>
-              </span>
             </Reveal>
 
             <div>
