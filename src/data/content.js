@@ -17,6 +17,10 @@ export const IMAGES = {
     src: P("classroom"),
     alt: "A Montessori practical-life session at Kayo International Preschool, with child-friendly learning materials on open shelves",
   },
+  careers: {
+    src: asset("/media/photos/careers.webp"),
+    alt: "A Kayo International educator leading a floor-based group activity with children at the Perungudi campus",
+  },
   familyConnect: {
     src: asset("/media/photos/family-connect.webp"),
     alt: "Kayo International families taking part in a classroom celebration together at the Perungudi campus",

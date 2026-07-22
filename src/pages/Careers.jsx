@@ -61,7 +61,7 @@ export default function Careers() {
         title={CAREERS.seoTitle}
         description={CAREERS.metaDescription}
         path="/careers"
-        image={IMAGES.teachers.src}
+        image={IMAGES.careers.src}
         jsonLd={jsonLd}
       />
 
@@ -69,7 +69,7 @@ export default function Careers() {
         eyebrow="Careers"
         title={CAREERS.h1}
         lead={CAREERS.lead}
-        image={IMAGES.teachers}
+        image={IMAGES.careers}
         breadcrumb={["Careers"]}
       />
 
