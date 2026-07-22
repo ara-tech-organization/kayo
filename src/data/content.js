@@ -17,6 +17,10 @@ export const IMAGES = {
     src: P("classroom"),
     alt: "A Montessori practical-life session at Kayo International Preschool, with child-friendly learning materials on open shelves",
   },
+  playgroup: {
+    src: asset("/media/photos/playgroup.webp"),
+    alt: "Kayo International playgroup children holding the teddy-bear crafts they made on Red Day",
+  },
   careers: {
     src: asset("/media/photos/careers.webp"),
     alt: "A Kayo International educator leading a floor-based group activity with children at the Perungudi campus",
@@ -231,7 +235,7 @@ export const PROGRAMMES = {
       age: "1.5 to 3 Years",
       short: "A gentle first step into joyful learning.",
       desc: "Our gentle playgroup programme introduces toddlers to a structured yet joyful learning environment. Through sensory play, music, movement, and social interaction, your little one builds confidence, language skills, and early cognitive abilities — all while feeling safe and loved.",
-      image: IMAGES.play,
+      image: IMAGES.playgroup,
       highlights: ["Sensory play", "Music & movement", "Social interaction"],
     },
     {
