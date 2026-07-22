@@ -30,8 +30,8 @@ export const CONTACT = {
 };
 
 export const SOCIAL = [
-  { label: "Facebook", href: "https://www.facebook.com/kayointernational", icon: "facebook" },
-  { label: "Instagram", href: "https://www.instagram.com/kayointernational", icon: "instagram" },
+  { label: "Facebook", href: "https://www.facebook.com/kayoschools", icon: "facebook" },
+  { label: "Instagram", href: "https://www.instagram.com/kayo_perungudi", icon: "instagram" },
   { label: "WhatsApp", href: CONTACT.whatsappHref, icon: "whatsapp" },
 ];
 

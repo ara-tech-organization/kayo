@@ -256,10 +256,20 @@
   font-size: var(--fs-xs);
 }
 
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
 .copy,
-.branches {
+.credit {
   margin: 0;
   color: rgba(255, 255, 255, 0.55);
+}
+
+.credit {
+  color: rgba(255, 255, 255, 0.42);
 }
 
 /* ---- Breakpoints -------------------------------------------------------- */

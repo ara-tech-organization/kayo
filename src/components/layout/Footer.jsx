@@ -149,12 +149,14 @@ export default function Footer() {
 
         {/* ---- Legal ---------------------------------------------------- */}
         <div className={styles.bottom}>
-          <p className={styles.copy}>
-            © {YEAR} {SITE.legalName}. All rights reserved.
-          </p>
-          <p className={styles.branches}>
-            {CONTACT.branches.join("  ·  ")}
-          </p>
+          <div className={styles.legal}>
+            <p className={styles.copy}>
+              © {YEAR} {SITE.name}. All rights reserved.
+            </p>
+            <p className={styles.credit}>
+              Designed and Developed by ARA Discover Technologies
+            </p>
+          </div>
         </div>
       </Container>
     </footer>
