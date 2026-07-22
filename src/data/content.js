@@ -17,6 +17,10 @@ export const IMAGES = {
     src: P("classroom"),
     alt: "A Montessori practical-life session at Kayo International Preschool, with child-friendly learning materials on open shelves",
   },
+  franchiseHero: {
+    src: asset("/media/photos/franchise.webp"),
+    alt: "Shelves of learning materials and toys at a Kayo International centre",
+  },
   welcomeFamily: {
     src: asset("/media/photos/welcome-family.webp"),
     alt: "A Kayo International family with their child at the Welcome to School board on the Perungudi campus",
@@ -755,7 +759,7 @@ export const ABOUT = {
       "Every teacher at Kayo International holds a Bachelor's degree in Early Years Education or an equivalent professional qualification. We believe that understanding child development, learning psychology, and age-appropriate teaching methodologies is essential to providing the quality of care your child deserves.",
       "Our teachers regularly participate in training sessions and workshops to stay updated with the latest research in early childhood education. When you choose Kayo, you are choosing a preschool with qualified teachers in Chennai who are truly invested in your child's success.",
     ],
-    image: IMAGES.teachers,
+    image: IMAGES.kayoFamily,
   },
 };
 

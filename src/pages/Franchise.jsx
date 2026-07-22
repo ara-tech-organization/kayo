@@ -25,14 +25,14 @@ export default function Franchise() {
         title={FRANCHISE.seoTitle}
         description={FRANCHISE.metaDescription}
         path="/franchise"
-        image={IMAGES.campus.src}
+        image={IMAGES.franchiseHero.src}
       />
 
       <PageHero
         eyebrow="Franchise opportunity"
         title={FRANCHISE.h1}
         lead={FRANCHISE.lead}
-        image={IMAGES.campus}
+        image={IMAGES.franchiseHero}
         breadcrumb={["Franchise"]}
       >
         <Button href="#franchise-enquiry" size="lg">
