@@ -1,0 +1,23 @@
+/* Painted as a background image rather than a z-index:-1 pseudo-element — a
+   negative z-index would drop the bar behind the section's own background.
+   `box-decoration-break: clone` gives each line its own bar when the phrase
+   wraps; the default (slice) stretches one bar across the whole inline box and
+   misplaces it on the second line. */
+.mark {
+  background-repeat: no-repeat;
+  background-size: 100% 0.3em;
+  background-position: 0 84%;
+  padding-inline: 0.06em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.brand {
+  color: var(--brand-500);
+  background-image: linear-gradient(rgba(156, 203, 59, 0.34), rgba(156, 203, 59, 0.34));
+}
+
+.light {
+  color: #fff;
+  background-image: linear-gradient(rgba(156, 203, 59, 0.42), rgba(156, 203, 59, 0.42));
+}

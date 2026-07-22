@@ -1,0 +1,238 @@
+.head {
+  margin-bottom: var(--s-6);
+}
+
+.note {
+  margin: var(--s-6) 0 0;
+  padding: var(--s-5);
+  border-radius: var(--r-md);
+  background: var(--brand-50);
+  border-left: 3px solid var(--brand-400);
+  font-size: var(--fs-sm);
+  line-height: 1.72;
+  color: var(--ink-700);
+}
+
+/* ---- Why partner -------------------------------------------------------- */
+
+.why {
+  padding-block: var(--section-y);
+  background: #fff;
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+
+/* ---- Support ------------------------------------------------------------ */
+
+.support {
+  padding-block: var(--section-y);
+  background: var(--grad-dusk);
+}
+
+.supportRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.supportItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+  height: 100%;
+  padding: clamp(1.5rem, 2.6vw, 2rem) var(--s-4);
+  text-align: center;
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform var(--t-slow) var(--ease-out), background var(--t-base) var(--ease-out),
+    border-color var(--t-base) var(--ease-out);
+}
+
+.supportItem:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.supportIcon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-400);
+  transition: background var(--t-base) var(--ease-out), color var(--t-base) var(--ease-out),
+    transform var(--t-slow) var(--ease-spring);
+}
+
+.supportIcon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.supportItem:hover .supportIcon {
+  background: var(--grad-accent);
+  color: var(--ink-900);
+  transform: translateY(-2px) scale(1.06);
+}
+
+.supportName {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  line-height: 1.4;
+  color: #fff;
+}
+
+/* ---- Profile + investment ----------------------------------------------- */
+
+.profile {
+  padding-block: var(--section-y);
+  background: var(--cream-soft);
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  margin: 0;
+}
+
+.checkItem {
+  display: flex;
+  gap: var(--s-3);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.checkItem strong {
+  color: var(--ink-900);
+}
+
+.checkItem svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  margin-top: 2px;
+  padding: 3px;
+  border-radius: var(--r-full);
+  background: var(--accent-100);
+  color: var(--accent-700);
+}
+
+.investList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.invest {
+  padding: var(--s-5);
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--sh-xs);
+  transition: transform var(--t-base) var(--ease-out), box-shadow var(--t-base) var(--ease-out),
+    border-color var(--t-base) var(--ease-out);
+}
+
+.invest:hover {
+  transform: translateX(5px);
+  border-color: var(--brand-200);
+  box-shadow: var(--sh-md);
+}
+
+.investName {
+  margin: 0 0 var(--s-1);
+  font-size: var(--fs-h6);
+}
+
+.investDesc {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ---- Enquiry ------------------------------------------------------------ */
+
+.enquiry {
+  padding-block: var(--section-y);
+  background: #fff;
+  scroll-margin-top: calc(var(--nav-h) + 2rem);
+}
+
+ /* Centred, not top-aligned: the copy column carries a photo and runs taller
+    than the form, so start-alignment dumped the whole difference at the bottom
+    as dead space. */
+.enquiryGrid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.locations {
+  margin: 0;
+  padding: var(--s-5);
+  border-radius: var(--r-md);
+  background: linear-gradient(160deg, var(--accent-50) 0%, #fff 70%);
+  border: 1px solid var(--accent-200);
+  font-size: var(--fs-sm);
+  line-height: 1.72;
+  color: var(--ink-700);
+}
+
+.formCard {
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--sh-lg);
+}
+
+/* ---- Breakpoints -------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .whyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .supportRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .profileGrid,
+  .enquiryGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .whyGrid,
+  .supportRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.partnersMedia {
+  margin-top: var(--s-5);
+}
+
+.partnersImg {
+  max-height: 300px;
+}

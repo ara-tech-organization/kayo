@@ -1,0 +1,75 @@
+.section {
+  padding-block: var(--section-y);
+  background: #fff;
+}
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.tileLarge {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  isolation: isolate;
+}
+
+.figure {
+  height: 100%;
+}
+
+.tileLarge .figure {
+  aspect-ratio: auto !important;
+  height: 100%;
+}
+
+.img {
+  transition: transform 1000ms var(--ease-out);
+}
+
+.tile:hover .img {
+  transform: scale(1.08);
+}
+
+/* Diagonal light sweep on hover. */
+.sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--grad-sheen);
+  transform: translateX(-120%);
+  transition: transform 900ms var(--ease-out);
+  pointer-events: none;
+}
+
+.tile:hover .sheen {
+  transform: translateX(120%);
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.25rem, 4vw, 3rem);
+}
+
+@media (max-width: 900px) {
+  .mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .tileLarge {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+  .tileLarge .figure {
+    aspect-ratio: 4 / 3 !important;
+  }
+}

@@ -1,0 +1,129 @@
+.section {
+  padding-block: var(--section-y);
+  background: var(--cream-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: var(--s-4);
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  height: 100%;
+  padding: var(--s-5);
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--sh-xs);
+  transition: transform var(--t-base) var(--ease-out), box-shadow var(--t-base) var(--ease-out),
+    border-color var(--t-base) var(--ease-out), background var(--t-base) var(--ease-out);
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-200);
+  background: linear-gradient(160deg, var(--brand-50) 0%, #fff 70%);
+  box-shadow: var(--sh-md);
+}
+
+.pin {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  color: var(--accent-600);
+  transition: color var(--t-base) var(--ease-out), transform var(--t-slow) var(--ease-spring);
+}
+
+.tile:hover .pin {
+  color: var(--brand-500);
+  transform: translateY(-2px) scale(1.12);
+}
+
+.name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-800);
+}
+
+.wider {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--s-2) var(--s-3);
+  margin-top: var(--s-6);
+  text-align: center;
+}
+
+.widerLabel {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.widerItems {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  color: var(--brand-500);
+}
+
+/* ---- Branches ----------------------------------------------------------- */
+
+.branches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-6);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--sh-sm);
+}
+
+.branchList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.branch {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--accent-500);
+}
+
+.branchNote {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-400);
+}
+
+.branchName {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  color: var(--ink-900);
+}
+
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-3);
+  }
+  .tile {
+    padding: var(--s-4);
+  }
+  .branches {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

@@ -1,0 +1,160 @@
+.section {
+  padding-block: var(--section-y);
+  background: #fff;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 9vw, 8rem);
+}
+
+.block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+}
+
+.flipped .media {
+  order: 2;
+}
+
+/* ---- Media -------------------------------------------------------------- */
+
+.media {
+  position: relative;
+}
+
+
+.img {
+  transition: transform 1100ms var(--ease-out);
+}
+
+.media:hover .img {
+  transform: scale(1.05);
+}
+
+.index {
+  position: absolute;
+  top: -22px;
+  right: -14px;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: var(--r-full);
+  background: var(--grad-brand);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  box-shadow: var(--sh-brand);
+  border: 5px solid var(--cream-soft);
+}
+
+.flipped .index {
+  right: auto;
+  left: -14px;
+}
+
+/* ---- Copy --------------------------------------------------------------- */
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  align-items: flex-start;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--brand-500);
+}
+
+.eyebrowDot {
+  width: 20px;
+  height: 2px;
+  border-radius: var(--r-full);
+  background: var(--grad-accent);
+}
+
+.title {
+  margin: 0;
+  max-width: 20ch;
+  font-size: var(--fs-h3);
+}
+
+.body {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--text-muted);
+  line-height: var(--lh-body);
+}
+
+.points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3) var(--s-5);
+  width: 100%;
+  margin: 0;
+  padding: var(--s-5) 0;
+  border-block: 1px solid var(--line);
+}
+
+.points li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-700);
+}
+
+.points svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  padding: 3px;
+  border-radius: var(--r-full);
+  background: var(--accent-100);
+  color: var(--accent-700);
+}
+
+/* ---- Breakpoints -------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .block {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+  .flipped .media {
+    order: 0;
+  }
+  .index {
+    width: 62px;
+    height: 62px;
+    font-size: 1.3rem;
+    right: var(--s-4);
+    top: -18px;
+  }
+  .flipped .index {
+    left: auto;
+    right: var(--s-4);
+  }
+  .title {
+    max-width: 24ch;
+  }
+}
+
+@media (max-width: 560px) {
+  .points {
+    grid-template-columns: 1fr;
+  }
+}

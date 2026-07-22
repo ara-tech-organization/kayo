@@ -1,0 +1,111 @@
+.section {
+  position: relative;
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+  background: var(--grad-brand);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Soft dotted texture keeps the flat gradient from feeling empty. */
+.pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.16;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
+}
+
+.head {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  color: #fff;
+}
+
+.script {
+  font-family: var(--font-script);
+  color: var(--accent-400);
+  white-space: nowrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-inline: var(--s-5);
+  text-align: center;
+  align-items: center;
+}
+
+.item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 0;
+  height: 76%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(255, 255, 255, 0.28) 40%,
+    rgba(255, 255, 255, 0.28) 60%,
+    transparent
+  );
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.4vw, 3.75rem);
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.label {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.desc {
+  max-width: 24ch;
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+  .item:nth-child(2)::after {
+    display: none;
+  }
+  .script {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .item::after {
+    display: none !important;
+  }
+}

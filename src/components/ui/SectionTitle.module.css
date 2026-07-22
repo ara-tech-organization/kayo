@@ -1,0 +1,91 @@
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  margin-bottom: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.center .lead {
+  margin-inline: auto;
+}
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* ---- Eyebrow ------------------------------------------------------------ */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--brand-500);
+}
+
+.eyebrowDot {
+  width: 20px;
+  height: 2px;
+  border-radius: var(--r-full);
+  background: var(--grad-accent);
+}
+
+/* ---- Title -------------------------------------------------------------- */
+
+.title {
+  margin: 0;
+  max-width: 22ch;
+}
+
+.center .title {
+  max-width: 24ch;
+  margin-inline: auto;
+}
+
+/* ---- Lead --------------------------------------------------------------- */
+
+.lead {
+  margin: 0;
+  max-width: 68ch;
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+  line-height: var(--lh-body);
+}
+
+.extra {
+  margin-top: var(--s-2);
+}
+
+/* ---- Light tone (on dark backgrounds) ----------------------------------- */
+
+.light .title {
+  color: #fff;
+}
+
+.light .lead {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.light .eyebrow {
+  color: var(--accent-400);
+}
+
+@media (max-width: 640px) {
+  .head {
+    gap: var(--s-3);
+  }
+  .title,
+  .center .title {
+    max-width: none;
+  }
+}

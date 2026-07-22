@@ -1,0 +1,240 @@
+/* ---- Shared prose ------------------------------------------------------- */
+
+.para {
+  margin: 0 0 var(--s-4);
+  color: var(--text-muted);
+  line-height: var(--lh-body);
+}
+
+.para:last-of-type {
+  margin-bottom: 0;
+}
+
+.storyHead {
+  margin-bottom: var(--s-6);
+}
+
+
+/* ---- Intro -------------------------------------------------------------- */
+
+.intro {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background: #fff;
+}
+
+.introText {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  line-height: 1.62;
+  text-align: center;
+  color: var(--ink-800);
+  letter-spacing: -0.01em;
+}
+
+/* ---- Story -------------------------------------------------------------- */
+
+.story {
+  padding-block: var(--section-y);
+  background: var(--cream-soft);
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.storyMedia {
+  position: relative;
+}
+
+.storyBadge {
+  position: absolute;
+  right: -18px;
+  bottom: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--sh-lg);
+}
+
+.storyBadgeValue {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  line-height: 1;
+  color: var(--brand-500);
+}
+
+.storyBadgeLabel {
+  max-width: 12ch;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+/* ---- Founders ----------------------------------------------------------- */
+
+.founders {
+  padding-block: var(--section-y);
+  background: #fff;
+}
+
+.founderList {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 8vw, 7rem);
+}
+
+/* Explicit placement, not `order`: `order` changes grid auto-placement, which
+   dropped the portrait into the wide track and squeezed the copy into the
+   narrow one on every flipped card. The portrait track is sized to the portrait
+   itself, so the gap is the only space between image and copy — an fr track
+   left a dead gutter beside it. */
+.founder {
+  display: grid;
+  grid-template-columns: clamp(240px, 25vw, 350px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.founderMedia {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+}
+
+.founderCopy {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.founderFlip {
+  grid-template-columns: minmax(0, 1fr) clamp(240px, 25vw, 350px);
+}
+
+.founderFlip .founderMedia {
+  grid-column: 2;
+}
+
+.founderFlip .founderCopy {
+  grid-column: 1;
+}
+
+.founderRole {
+  margin: 0 0 var(--s-2);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--brand-500);
+}
+
+.founderName {
+  margin: 0 0 var(--s-5);
+  font-size: var(--fs-h3);
+}
+
+.credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin: var(--s-6) 0 0;
+}
+
+.credential {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--r-full);
+  background: var(--brand-50);
+  border: 1px solid var(--brand-100);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--brand-600);
+}
+
+.credential svg {
+  width: 15px;
+  height: 15px;
+  color: var(--accent-600);
+}
+
+/* ---- Team --------------------------------------------------------------- */
+
+.team {
+  padding-block: var(--section-y);
+  background: var(--cream-soft);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.teamActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-7);
+}
+
+/* ---- Breakpoints -------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .storyGrid,
+  .founder,
+  .founderFlip,
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+  /* Unwind the two-column placement so the portrait always leads. */
+  .founderMedia,
+  .founderFlip .founderMedia {
+    grid-row: auto;
+    grid-column: 1;
+    justify-self: center;
+  }
+  .founderCopy,
+  .founderFlip .founderCopy {
+    grid-row: auto;
+    grid-column: 1;
+  }
+  .teamMedia {
+    order: -1;
+  }
+  .storyMedia {
+    max-width: 520px;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .founderMedia {
+    max-width: 340px;
+  }
+  .storyBadge {
+    right: var(--s-4);
+  }
+}
+
+@media (max-width: 560px) {
+  .teamActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .storyBadge {
+    padding: var(--s-4);
+  }
+}

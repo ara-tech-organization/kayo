@@ -1,0 +1,191 @@
+.section {
+  padding-block: var(--section-y);
+  background: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+/* ---- Contact cards ------------------------------------------------------ */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-4);
+}
+
+.card {
+  display: flex;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--sh-sm);
+  transition: transform var(--t-base) var(--ease-out), box-shadow var(--t-base) var(--ease-out),
+    border-color var(--t-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-200);
+  box-shadow: var(--sh-md);
+}
+
+.cardIcon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: var(--r-md);
+  background: var(--brand-50);
+  color: var(--brand-500);
+  transition: background var(--t-base) var(--ease-out), color var(--t-base) var(--ease-out);
+}
+
+.cardIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.card:hover .cardIcon {
+  background: var(--grad-brand);
+  color: #fff;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.cardLabel {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-500);
+}
+
+.cardLines {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--ink-700);
+  overflow-wrap: anywhere;
+}
+
+.cardAction {
+  margin-top: var(--s-1);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--accent-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--t-base) var(--ease-out);
+}
+
+.cardAction:hover {
+  color: var(--brand-600);
+}
+
+/* ---- Map ---------------------------------------------------------------- */
+
+.mapWrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--sh-md);
+  background: var(--mist);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 34vh, 360px);
+  border: 0;
+  filter: saturate(0.92);
+}
+
+/* ---- Form card ---------------------------------------------------------- */
+
+.formCard {
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--sh-lg);
+}
+
+.formTitle {
+  margin: 0 0 var(--s-2);
+  font-size: var(--fs-h4);
+}
+
+.formLead {
+  margin: 0 0 var(--s-7);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.formFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-5);
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.formFootLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-weight: 600;
+  color: var(--brand-600);
+  transition: color var(--t-base) var(--ease-out);
+}
+
+.formFootLink:hover {
+  color: var(--brand-700);
+}
+
+.formFootLink svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-600);
+}
+
+/* ---- Breakpoints -------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

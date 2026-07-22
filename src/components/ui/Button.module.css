@@ -1,0 +1,193 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--r-full);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--t-base) var(--ease-out), box-shadow var(--t-base) var(--ease-out),
+    background-color var(--t-base) var(--ease-out), color var(--t-base) var(--ease-out),
+    border-color var(--t-base) var(--ease-out);
+  will-change: transform;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  position: relative;
+  z-index: 2;
+}
+
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.btn:hover .icon {
+  transform: translateX(3px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+
+.sm {
+  padding: 0.62rem 1.15rem;
+  font-size: var(--fs-sm);
+}
+
+.md {
+  padding: 0.9rem 1.75rem;
+  font-size: var(--fs-base);
+}
+
+.lg {
+  padding: 1.1rem 2.25rem;
+  font-size: var(--fs-md);
+}
+
+.full {
+  width: 100%;
+}
+
+/* ---- Primary: brand gradient with a sheen sweep ------------------------- */
+
+.primary {
+  color: #fff;
+  background: var(--grad-brand);
+  box-shadow: var(--sh-brand);
+}
+
+.primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--grad-sheen);
+  transform: translateX(-120%);
+  transition: transform 720ms var(--ease-out);
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-brand-lg);
+}
+
+.primary:hover::before {
+  transform: translateX(120%);
+}
+
+/* ---- Secondary: accent gradient ---------------------------------------- */
+
+.secondary {
+  color: var(--ink-900);
+  background: var(--grad-accent);
+  box-shadow: var(--sh-accent);
+}
+
+.secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 54px -18px rgba(156, 203, 59, 0.55);
+}
+
+/* ---- Ghost: quiet, bordered -------------------------------------------- */
+
+.ghost {
+  color: var(--brand-600);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--sh-xs);
+}
+
+.ghost:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  border-color: var(--brand-300);
+  box-shadow: var(--sh-md);
+}
+
+/* ---- Light: solid white on dark / photographic backgrounds -------------- */
+
+.light {
+  color: var(--brand-600);
+  background: #fff;
+  box-shadow: var(--sh-lg);
+}
+
+.light:hover {
+  transform: translateY(-2px);
+  color: var(--brand-700);
+  box-shadow: var(--sh-xl);
+}
+
+/* ---- Outline-light: glass on dark / photographic backgrounds ------------ */
+
+.outlineLight,
+.outline-light {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.outlineLight:hover,
+.outline-light:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---- Ripple ------------------------------------------------------------- */
+
+.ripples {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleOut 600ms var(--ease-out) forwards;
+}
+
+.secondary .ripple,
+.light .ripple,
+.ghost .ripple {
+  background: rgba(146, 43, 141, 0.18);
+}
+
+@keyframes rippleOut {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover {
+    transform: none;
+  }
+  .ripple {
+    display: none;
+  }
+}

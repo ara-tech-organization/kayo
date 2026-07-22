@@ -1,0 +1,39 @@
+/* Height-driven so the logo scales with the navbar; width follows the 400×180
+   intrinsic ratio, and the explicit width/height attrs reserve the box. */
+.logo {
+  display: block;
+  height: 54px;
+  width: auto;
+  transition: height var(--t-slow) var(--ease-out), transform var(--t-slow) var(--ease-spring);
+}
+
+a:hover > .logo,
+a:focus-visible > .logo {
+  transform: scale(1.03);
+}
+
+.compact {
+  height: 44px;
+}
+
+@media (max-width: 1120px) {
+  .logo {
+    height: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    height: 42px;
+  }
+  .compact {
+    height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a:hover > .logo,
+  a:focus-visible > .logo {
+    transform: none;
+  }
+}

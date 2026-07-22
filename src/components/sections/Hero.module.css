@@ -1,0 +1,335 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(660px, 100svh, 1000px);
+  padding-top: calc(var(--nav-h) + clamp(2rem, 6vw, 5rem));
+  /* Deep enough to hold the content's parallax drift without clipping. */
+  padding-bottom: clamp(7rem, 12vw, 9.5rem);
+  isolation: isolate;
+  background: var(--ink-900);
+}
+
+/* ---- Background --------------------------------------------------------- */
+
+/* Clips the bleeding, scaling background and the floating shapes. The section
+   itself must not clip, or it cuts off the parallaxed content. */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: -6% 0 -12%;
+  will-change: transform;
+}
+
+.bgImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  background: var(--grad-veil);
+}
+
+.veil::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      120% 90% at 12% 45%,
+      rgba(51, 16, 50, 0.88) 0%,
+      rgba(51, 16, 50, 0.35) 46%,
+      transparent 72%
+    );
+}
+
+/* Very fine noise keeps large gradients from banding. */
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.55'/></svg>");
+}
+
+/* ---- Floating shapes ---------------------------------------------------- */
+
+.shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(0.5px);
+}
+
+.shape1 {
+  top: 16%;
+  right: 12%;
+  width: 118px;
+  height: 118px;
+  background: radial-gradient(circle at 32% 30%, rgba(156, 203, 59, 0.5), rgba(156, 203, 59, 0.08));
+  border: 1px solid rgba(156, 203, 59, 0.3);
+}
+
+.shape2 {
+  bottom: 22%;
+  right: 26%;
+  width: 62px;
+  height: 62px;
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(6px);
+}
+
+.shape3 {
+  top: 30%;
+  right: 34%;
+  width: 26px;
+  height: 26px;
+  background: var(--accent-500);
+  opacity: 0.8;
+}
+
+.shape4 {
+  bottom: 14%;
+  right: 6%;
+  width: 168px;
+  height: 168px;
+  background: radial-gradient(circle at 40% 35%, rgba(168, 53, 159, 0.55), transparent 68%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ---- Content ------------------------------------------------------------ */
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  max-width: 46rem;
+  will-change: transform, opacity;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0 0 var(--s-5);
+  padding: 0.5rem 1.05rem;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.eyebrowStar {
+  width: 14px;
+  height: 14px;
+  color: var(--amber);
+  fill: var(--amber);
+}
+
+/* ---- Headline ----------------------------------------------------------- */
+
+.title {
+  margin: 0 0 var(--s-6);
+  font-size: var(--fs-hero);
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: 0 2px 26px rgba(34, 19, 39, 0.34);
+}
+
+.line {
+  display: block;
+}
+
+.wordMask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-right: 0.26em;
+  padding-bottom: 0.06em;
+}
+
+.word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.script {
+  display: block;
+  margin-top: 0.12em;
+  font-family: var(--font-script);
+  font-size: 0.62em;
+  line-height: 1.2;
+  color: var(--accent-400);
+  text-shadow: 0 2px 20px rgba(156, 203, 59, 0.3);
+}
+
+/* ---- Lead + actions ----------------------------------------------------- */
+
+.lead {
+  margin: 0 0 var(--s-8);
+  max-width: 56ch;
+  font-size: var(--fs-lg);
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+/* ---- Trust badges ------------------------------------------------------- */
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  margin: 0;
+  padding-top: var(--s-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.badgeValue {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  line-height: 1;
+  color: #fff;
+}
+
+.badgeLabel {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ---- Scroll indicator --------------------------------------------------- */
+
+.scroll {
+  position: absolute;
+  bottom: clamp(1.75rem, 4vw, 2.75rem);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--t-base) var(--ease-out);
+}
+
+.scroll:hover {
+  color: #fff;
+}
+
+.scrollTrack {
+  position: relative;
+  display: block;
+  width: 26px;
+  height: 42px;
+  border-radius: var(--r-full);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+}
+
+.scrollDot {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  translate: -50% 0;
+  width: 4px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--accent-500);
+}
+
+.scrollLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scrollIcon {
+  width: 13px;
+  height: 13px;
+}
+
+/* ---- Breakpoints -------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .shape2,
+  .shape3 {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-bottom: clamp(5rem, 14vw, 7rem);
+  }
+  .shapes {
+    display: none;
+  }
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .badges {
+    gap: var(--s-6);
+  }
+  .veil::after {
+    background: radial-gradient(
+      140% 110% at 20% 40%,
+      rgba(51, 16, 50, 0.9) 0%,
+      rgba(51, 16, 50, 0.5) 50%,
+      transparent 80%
+    );
+  }
+}
+
+@media (max-width: 520px) {
+  .scroll {
+    display: none;
+  }
+  .badgeValue {
+    font-size: 1.5rem;
+  }
+}
