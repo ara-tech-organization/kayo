@@ -51,7 +51,7 @@ export default function Hero() {
      The content drift stays inside the hero's bottom padding, and the fade
      completes first, so nothing is ever visibly cut off or spills out. */
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.06, 1.16]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 

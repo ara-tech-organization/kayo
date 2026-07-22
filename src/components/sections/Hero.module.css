@@ -23,7 +23,7 @@
 
 .bg {
   position: absolute;
-  inset: -6% 0 -12%;
+  inset: -3% 0 -6%;
   will-change: transform;
 }
 
