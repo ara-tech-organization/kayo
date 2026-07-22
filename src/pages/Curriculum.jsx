@@ -51,8 +51,8 @@ export default function Curriculum() {
 
             <Reveal variant="left" duration={0.9} className={styles.defMedia}>
               <Figure
-                src={IMAGES.classroom.src}
-                alt={IMAGES.classroom.alt}
+                src={IMAGES.curriculumFramework.src}
+                alt={IMAGES.curriculumFramework.alt}
                 ratio="4 / 5"
                 rounded="xl"
                 sizes="(max-width: 980px) 100vw, 42vw"

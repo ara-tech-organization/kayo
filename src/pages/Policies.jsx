@@ -81,7 +81,7 @@ export default function Policies() {
       <CtaBanner
         title="See our policies in action"
         body="There is no substitute for experiencing firsthand the warm, secure environment we have created for our children. Every family is welcome to visit."
-        image={IMAGES.classroom}
+        image={IMAGES.parentMeeting}
       />
     </>
   );

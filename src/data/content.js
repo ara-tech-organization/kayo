@@ -17,6 +17,26 @@ export const IMAGES = {
     src: P("classroom"),
     alt: "A Montessori practical-life session at Kayo International Preschool, with child-friendly learning materials on open shelves",
   },
+  familyConnect: {
+    src: asset("/media/photos/family-connect.webp"),
+    alt: "Kayo International families taking part in a classroom celebration together at the Perungudi campus",
+  },
+  parentMeeting: {
+    src: asset("/media/photos/parent-meeting.webp"),
+    alt: "Kayo International staff talking parents through the curriculum during a campus visit in Perungudi",
+  },
+  curriculumFramework: {
+    src: asset("/media/photos/curriculum-framework.webp"),
+    alt: "Kayo International children on Green Day beside their colour-themed display board at the Perungudi campus",
+  },
+  classroomGroup: {
+    src: asset("/media/photos/classroom-group.webp"),
+    alt: "Kayo International teachers and children together in a classroom at the Perungudi campus, Chennai",
+  },
+  kayoFamily: {
+    src: asset("/media/photos/kayo-family.webp"),
+    alt: "The Kayo International team of teachers and caregivers at the Perungudi campus",
+  },
   ourStory: {
     src: asset("/media/photos/our-story.webp"),
     alt: "Kayo International children celebrating Yellow Day together at the Perungudi campus",

@@ -26,14 +26,14 @@ export default function Gallery() {
         title="Gallery | Kayo International Preschool, Perungudi Chennai"
         description="A glimpse into joyful learning at Kayo International — classroom activities, creative play, celebrations and everyday milestones in Perungudi, Chennai."
         path="/gallery"
-        image={IMAGES.play.src}
+        image={IMAGES.classroomGroup.src}
       />
 
       <PageHero
         eyebrow="Gallery"
         title="Life at Kayo International"
         lead={GALLERY_INTRO}
-        image={IMAGES.play}
+        image={IMAGES.classroomGroup}
         breadcrumb={["Gallery"]}
       />
 

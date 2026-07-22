@@ -21,14 +21,14 @@ export default function FamilyConnect() {
         title={FAMILY_CONNECT.seoTitle}
         description={FAMILY_CONNECT.metaDescription}
         path="/family-connect"
-        image={IMAGES.celebration.src}
+        image={IMAGES.familyConnect.src}
       />
 
       <PageHero
         eyebrow="Family Connect"
         title={FAMILY_CONNECT.h1}
         lead={FAMILY_CONNECT.lead}
-        image={IMAGES.celebration}
+        image={IMAGES.familyConnect}
         breadcrumb={["Family Connect"]}
       />
 
@@ -184,7 +184,7 @@ export default function FamilyConnect() {
       <CtaBanner
         title="Become part of the Kayo family"
         body="Visit our Perungudi campus, meet the educators who will know your child by name, and see how closely we work with every family."
-        image={IMAGES.music}
+        image={IMAGES.kayoFamily}
       />
     </>
   );

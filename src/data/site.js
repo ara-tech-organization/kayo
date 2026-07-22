@@ -46,14 +46,7 @@ export const NAV = [
       { label: "Our Policies", to: "/policies", desc: "Safety, health and transparency" },
     ],
   },
-  {
-    label: "Curriculum",
-    to: "/curriculum",
-    children: [
-      { label: "NURTURE Lab", to: "/curriculum", desc: "Where Montessori meets STEM" },
-      { label: "Programmes", to: "/#programmes", desc: "Daycare through primary enrichment" },
-    ],
-  },
+  { label: "Curriculum", to: "/curriculum" },
   { label: "Gallery", to: "/gallery" },
   { label: "Franchise", to: "/franchise" },
   { label: "Careers", to: "/careers" },
