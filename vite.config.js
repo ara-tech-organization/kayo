@@ -3,6 +3,10 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
+  // GitHub Pages serves this repo from a sub-path. Pass the repo name as
+  // BASE_PATH in CI (bare name, no slashes — Git Bash rewrites values that look
+  // like absolute paths). Local dev and any root-domain host keep "/".
+  base: process.env.BASE_PATH ? `/${process.env.BASE_PATH}/` : "/",
   plugins: [react()],
   build: {
     target: "es2020",

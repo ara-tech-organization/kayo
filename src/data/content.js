@@ -1,10 +1,12 @@
+import asset from "../lib/asset";
+
 /* -------------------------------------------------------------------------- */
 /*  Imagery — real photography from the Kayo International Perungudi campus.   */
 /*  Files live in /public/media; alt text describes what each photo actually   */
 /*  shows, following the alt-text guidance in the content document.            */
 /* -------------------------------------------------------------------------- */
 
-const P = (name) => `/media/photos/${name}.webp`;
+const P = (name) => asset(`/media/photos/${name}.webp`);
 
 export const IMAGES = {
   hero: {
@@ -92,15 +94,15 @@ export const IMAGES = {
 
   /* Founders, partners — supplied by the client */
   founder: {
-    src: "/media/founders/veena-sundaramurthy.webp",
+    src: asset("/media/founders/veena-sundaramurthy.webp"),
     alt: "Veena Sundaramurthy, Founder of Kayo International Preschool, early childhood education expert",
   },
   coFounder: {
-    src: "/media/founders/sankara-k.webp",
+    src: asset("/media/founders/sankara-k.webp"),
     alt: "Sankara K, Co-Founder of Kayo International Preschool",
   },
   franchisePartners: {
-    src: "/media/franchise-partners.webp",
+    src: asset("/media/franchise-partners.webp"),
     alt: "Kayo International founders welcoming new franchise partners at a Kayo centre",
   },
 };
@@ -184,51 +186,51 @@ export const PROGRAMMES = {
   items: [
     {
       id: "daycare",
-      cutout: { src: "/media/programmes/daycare.webp", alt: "A toddler playing with a stacking-ring toy" },
+      cutout: { src: asset("/media/programmes/daycare.webp"), alt: "A toddler playing with a stacking-ring toy" },
       icon: "Baby",
       name: "Day Care",
       age: "6 Months Onwards",
-      short: "A safe, nurturing home-away-from-home for our youngest learners.",
+      short: "A safe, loving home away from home.",
       desc: "We understand the challenges of working parents. Our daycare in OMR Chennai provides a safe, nurturing home-away-from-home for babies as young as 6 months. With caring attendants, age-appropriate activities, nutritious meals, and restful nap times, your child is in the best hands while you are at work.",
       image: IMAGES.daycare,
       highlights: ["Caring attendants", "Nutritious meals", "Restful nap times"],
     },
     {
       id: "playgroup",
-      cutout: { src: "/media/programmes/playgroup.webp", alt: "A young child building a tower from chunky blocks" },
+      cutout: { src: asset("/media/programmes/playgroup.webp"), alt: "A young child building a tower from chunky blocks" },
       icon: "Blocks",
       name: "Playgroup",
       age: "1.5 to 3 Years",
-      short: "A gentle first step into structured, joyful learning.",
+      short: "A gentle first step into joyful learning.",
       desc: "Our gentle playgroup programme introduces toddlers to a structured yet joyful learning environment. Through sensory play, music, movement, and social interaction, your little one builds confidence, language skills, and early cognitive abilities — all while feeling safe and loved.",
       image: IMAGES.play,
       highlights: ["Sensory play", "Music & movement", "Social interaction"],
     },
     {
       id: "nursery",
-      cutout: { src: "/media/programmes/nursery.webp", alt: "A child sorting colourful balls into a basket" },
+      cutout: { src: asset("/media/programmes/nursery.webp"), alt: "A child sorting colourful balls into a basket" },
       icon: "Puzzle",
       name: "Nursery",
       age: "3 to 4 Years",
-      short: "Montessori-led discovery of practical life and early numeracy.",
+      short: "Montessori practical life and early numeracy.",
       desc: "In our nursery programme, children dive deeper into structured learning through the Montessori approach. Practical life skills, early numeracy, pre-writing activities, and language development form the core of this enriching year.",
       image: IMAGES.classroom,
       highlights: ["Practical life skills", "Early numeracy", "Pre-writing"],
     },
     {
       id: "lkg",
-      cutout: { src: "/media/programmes/lkg.webp", alt: "A child sitting on a stack of books, reading" },
+      cutout: { src: asset("/media/programmes/lkg.webp"), alt: "A child sitting on a stack of books, reading" },
       icon: "Pencil",
       name: "Lower Kindergarten",
       age: "4 to 5 Years",
-      short: "Foundational literacy and numeracy through hands-on learning.",
+      short: "Foundational literacy and numeracy through play.",
       desc: "Our LKG programme strengthens foundational literacy and numeracy through hands-on, play-based learning. Children explore science concepts, develop fine motor skills, and build the social confidence needed for formal schooling.",
       image: IMAGES.learning,
       highlights: ["Play-based literacy", "Science concepts", "Fine motor skills"],
     },
     {
       id: "ukg",
-      cutout: { src: "/media/programmes/ukg.webp", alt: "A child drawing with crayons" },
+      cutout: { src: asset("/media/programmes/ukg.webp"), alt: "A child drawing with crayons" },
       icon: "BookOpen",
       name: "Upper Kindergarten",
       age: "5 to 6 Years",
@@ -239,7 +241,7 @@ export const PROGRAMMES = {
     },
     {
       id: "enrichment",
-      cutout: { src: "/media/programmes/primary.webp", alt: "A child painting at a desk" },
+      cutout: { src: asset("/media/programmes/primary.webp"), alt: "A child painting at a desk" },
       icon: "Rocket",
       name: "Primary Enrichment",
       age: "6 to 12 Years",
@@ -437,7 +439,7 @@ export const RATINGS = [
  */
 export const AWARDS = [
   {
-    src: "/media/awards/education-world-2019.webp",
+    src: asset("/media/awards/education-world-2019.webp"),
     body: "EducationWorld",
     title: "Promising 21st Century India Preschool Awards",
     detail: "Teachers–Parents–Student Engagement",
@@ -445,7 +447,7 @@ export const AWARDS = [
     alt: "EducationWorld Promising 21st Century India Preschool Award 2018-19 certificate presented to Kayo International, Perungudi, Chennai",
   },
   {
-    src: "/media/awards/eca-hall-of-fame-2019.webp",
+    src: asset("/media/awards/eca-hall-of-fame-2019.webp"),
     body: "Early Childhood Association",
     title: "Hall of Fame Award",
     detail: "Top 50 Franchised Preschools in Asia",
@@ -453,7 +455,7 @@ export const AWARDS = [
     alt: "Early Childhood Association Hall of Fame Award 2019 certificate presented to Kayo International, Chennai",
   },
   {
-    src: "/media/awards/eminent-best-emerging-2020.webp",
+    src: asset("/media/awards/eminent-best-emerging-2020.webp"),
     body: "Indian's Eminent Educational Awards",
     title: "Best Emerging Pre School in South India",
     detail: "Certificate of Achievement",
@@ -461,7 +463,7 @@ export const AWARDS = [
     alt: "Indian's Eminent Educational Awards 2020 certificate naming Kayo International the Best Emerging Pre School in South India",
   },
   {
-    src: "/media/awards/brainfeed-top-100-2022.webp",
+    src: asset("/media/awards/brainfeed-top-100-2022.webp"),
     body: "Brainfeed School Excellence Awards",
     title: "Top 100 Preschools of India",
     detail: "Hyderabad",
@@ -469,7 +471,7 @@ export const AWARDS = [
     alt: "Brainfeed School Excellence Awards 2022 certificate recognising Kayo International Preschool, Chennai in the Top 100 Preschools of India",
   },
   {
-    src: "/media/awards/gslc-inspire-2023.webp",
+    src: asset("/media/awards/gslc-inspire-2023.webp"),
     body: "Global School Leaders' Consortium",
     title: "Pre-School with the Interactive Infrastructure",
     detail: "GSLC INSPIRE 3.0 — Regional",
@@ -477,7 +479,7 @@ export const AWARDS = [
     alt: "GSLC INSPIRE 3.0 2023 Certificate of Achievement presented to Kayo International School",
   },
   {
-    src: "/media/awards/ecdla-top-50-educators-2023.webp",
+    src: asset("/media/awards/ecdla-top-50-educators-2023.webp"),
     body: "ECDLA",
     title: "Top 50 Incredible Educators",
     detail: "Early Years Educators Summit & Awards — Veena Sundaramurthy",
@@ -485,7 +487,7 @@ export const AWARDS = [
     alt: "ECDLA certificate recognising Veena Sundaramurthy among the Top 50 Incredible Educators at the Early Years Educators Summit and Awards 2023",
   },
   {
-    src: "/media/awards/gtf-innovative-curriculum-2018.webp",
+    src: asset("/media/awards/gtf-innovative-curriculum-2018.webp"),
     body: "Global Triumph Foundation",
     title: "Best Early Education Innovative Curriculum in Chennai",
     detail: "GTF Education Summit & Awards, New Delhi",

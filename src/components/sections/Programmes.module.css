@@ -5,8 +5,15 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.25rem, 2.4vw, 2rem);
+}
+
+/* The reveal wrapper sits between the grid and the card, so the card's
+   height:100% had nothing definite to resolve against and cards never
+   equalised. Make the wrapper a stretched flex parent instead. */
+.grid > * {
+  display: flex;
 }
 
 /* ---- Card --------------------------------------------------------------- */
@@ -35,10 +42,11 @@
    overflow:hidden: the icon plate deliberately hangs below the panel. */
 .cardMedia {
   position: relative;
-  display: grid;
-  align-items: end;
-  justify-items: center;
-  aspect-ratio: 16 / 10;
+  /* Fixed height, not aspect-ratio: an aspect box derives its height from the
+     column width, so any width variance between columns shifted the panel
+     bottom — and with it the icon plate, title and copy. A fixed height makes
+     every card's content start on exactly the same line. */
+  height: 250px;
   overflow: visible;
 }
 
@@ -54,18 +62,27 @@
   background: linear-gradient(165deg, var(--cream) 0%, #fff 88%);
 }
 
+/* Absolutely positioned so the percentage height resolves against the panel's
+   aspect-ratio box. As a normal-flow child the percentage was indefinite, so it
+   fell back to the image's intrinsic 900px and burst out of the card — and
+   because each cut-out has a different intrinsic ratio, every panel ended up a
+   different height, throwing the icons and CTAs out of line. */
 .cardCutout {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 94%;
   width: auto;
-  max-width: 78%;
-  height: 90%;
+  max-width: 82%;
   object-fit: contain;
   object-position: bottom center;
+  transform: translateX(-50%);
   transform-origin: bottom center;
   transition: transform var(--t-slow) var(--ease-out);
 }
 
 .card:hover .cardCutout {
-  transform: scale(1.05) translateY(-2px);
+  transform: translateX(-50%) scale(1.05);
 }
 
 .cardIcon {
@@ -116,7 +133,7 @@
   flex-direction: column;
   gap: var(--s-3);
   flex: 1;
-  padding: calc(var(--s-8) + var(--s-1)) var(--s-6) var(--s-6);
+  padding: var(--s-8) var(--s-6) var(--s-6);
 }
 
 .cardTitle {
@@ -134,13 +151,18 @@
   color: var(--text-muted);
   font-size: var(--fs-sm);
   line-height: 1.7;
+  /* Every summary is written to fit one line, so no reserved block is needed —
+     the copy itself keeps the cards level. */
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-2);
-  margin: var(--s-1) 0 0;
+  /* Bottom-anchored with the CTA: any slack from a shorter description
+     collects above this group rather than under the title. */
+  margin: auto 0 0;
+  padding-top: var(--s-4);
 }
 
 .chip {
@@ -159,8 +181,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--s-3);
-  margin-top: auto;
-  padding-top: var(--s-5);
+  padding-top: var(--s-4);
   font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--brand-600);

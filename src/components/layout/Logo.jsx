@@ -1,3 +1,4 @@
+import asset from "../../lib/asset";
 import styles from "./Logo.module.css";
 
 /**
@@ -8,7 +9,7 @@ import styles from "./Logo.module.css";
  * wordmark is near-black and disappears there.
  */
 export default function Logo({ tone = "dark", compact = false }) {
-  const src = tone === "light" ? "/brand/kayo-logo-light.webp" : "/brand/kayo-logo.webp";
+  const src = asset(tone === "light" ? "/brand/kayo-logo-light.webp" : "/brand/kayo-logo.webp");
 
   return (
     <img

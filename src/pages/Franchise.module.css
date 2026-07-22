@@ -22,7 +22,7 @@
 
 .whyGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.25rem, 2.4vw, 1.75rem);
 }
 
@@ -35,7 +35,7 @@
 
 .supportRow {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -101,7 +101,7 @@
 
 .profileGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(2.5rem, 6vw, 5rem);
   align-items: start;
 }
@@ -211,10 +211,10 @@
 
 @media (max-width: 1080px) {
   .whyGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .supportRow {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .profileGrid,
   .enquiryGrid {
