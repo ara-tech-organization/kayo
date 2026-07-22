@@ -1,62 +1,33 @@
 .section {
   padding-block: var(--section-y);
   background: var(--cream-soft);
+  /* `clip` rather than `hidden` — it contains the connector bleed without
+     turning the section into a scroll container or trapping the cards'
+     hover lift. */
+  overflow-x: clip;
 }
 
-/* Below the desktop breakpoint the rail overflows into a swipeable row, so the
-   scroll container is separated from the (relatively positioned) rail — the
-   connector has to scroll with the nodes, not stay pinned to the viewport. */
-.scroller {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
-}
-
-.rail {
-  --node: 46px;
-  --age-h: 1.6rem;
-  --row-gap: var(--s-4);
-
-  position: relative;
-  padding-top: var(--s-2);
-}
-
-/* ---- Connector ---------------------------------------------------------- */
-
-.track {
-  position: absolute;
-  left: 0;
-  right: 0;
-  /* Sits on the vertical centre of the node row. */
-  top: calc(var(--s-2) + var(--age-h) + var(--row-gap) + var(--node) / 2 - 1px);
-  height: 2px;
-  border-radius: var(--r-full);
-  background: var(--line-strong);
-  overflow: hidden;
-}
-
-.trackFill {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform-origin: left;
-  background: linear-gradient(90deg, var(--brand-500), var(--accent-500));
-}
-
-/* ---- Items -------------------------------------------------------------- */
+/* ---- Rail --------------------------------------------------------------- */
 
 .list {
+  --node: 46px;
+  --age-h: 1.6rem;
+  --stack-gap: var(--s-4);
+  --col-gap: clamp(0.75rem, 1.2vw, 1.5rem);
+
   display: grid;
-  grid-template-columns: repeat(var(--cols, 6), minmax(0, 1fr));
-  gap: clamp(1rem, 1.6vw, 1.75rem);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: var(--s-9);
   margin: 0;
 }
 
+/* Age · connector + node · card. Giving the connector its own row means it
+   lands on the node's centre line without hard-coding any offsets. */
 .item {
   display: grid;
   grid-template-rows: var(--age-h) var(--node) 1fr;
-  row-gap: var(--row-gap);
+  row-gap: var(--stack-gap);
   text-align: center;
 }
 
@@ -69,9 +40,26 @@
   color: var(--accent-700);
 }
 
+/* ---- Connector ---------------------------------------------------------- */
+
+.connector {
+  grid-row: 2;
+  grid-column: 1;
+  align-self: center;
+  height: 2px;
+  border-radius: var(--r-full);
+  /* Bleeds half the column gap either side so neighbouring segments meet and
+     read as one continuous line across the row. */
+  margin-inline: calc(var(--col-gap) / -2);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--brand-300), var(--accent-400));
+}
+
 /* ---- Node --------------------------------------------------------------- */
 
 .node {
+  grid-row: 2;
+  grid-column: 1;
   justify-self: center;
   display: grid;
   place-items: center;
@@ -83,7 +71,7 @@
   font-size: var(--fs-sm);
   font-weight: 600;
   letter-spacing: var(--ls-tight);
-  /* Ring is painted in the band colour so the connector reads as broken by the
+  /* Ring painted in the band colour so the connector reads as broken by the
      node rather than passing behind it. */
   box-shadow: 0 0 0 5px var(--cream-soft), var(--sh-brand);
   z-index: 1;
@@ -93,7 +81,7 @@
 
 .card {
   height: 100%;
-  padding: clamp(1.1rem, 1.6vw, 1.5rem);
+  padding: clamp(0.9rem, 1.2vw, 1.4rem);
   border-radius: var(--r-lg);
   border: 1px solid var(--line);
   background: linear-gradient(165deg, var(--cream-soft) 0%, #fff 65%);
@@ -114,35 +102,66 @@
 }
 
 .desc {
-  margin: var(--s-3) 0 0;
-  font-size: var(--fs-sm);
-  line-height: 1.65;
+  margin: var(--s-2) 0 0;
+  font-size: var(--fs-xs);
+  line-height: 1.6;
   color: var(--text-muted);
 }
 
 /* ---- Breakpoints -------------------------------------------------------- */
 
-@media (max-width: 900px) {
-  /* Bleed the swipeable rail to the screen edges so cards can scroll past the
-     container gutter instead of being clipped by it. */
-  .scroller {
-    margin-inline: calc(var(--gutter) * -1);
-    padding-inline: var(--gutter);
-    padding-bottom: var(--s-4);
-    scroll-snap-type: x mandatory;
-  }
+/* Six across needs ~180px a column to stay readable; below that the rail wraps
+   rather than scrolls, and each row keeps its own connector.
 
-  .rail {
-    min-width: max-content;
-  }
+   The nth-child rules flatten the bleed on whichever cards start and end a row,
+   so the line runs node-to-node and never spills into the page gutter. Ranges
+   are non-overlapping — each column count owns exactly one block. */
 
+@media (min-width: 1141px) {
+  .item:nth-child(6n + 1) .connector {
+    margin-left: 0;
+  }
+  .item:nth-child(6n) .connector {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1140px) and (min-width: 721px) {
   .list {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: min(17rem, 72vw);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    --col-gap: clamp(1rem, 2vw, 1.75rem);
   }
+  .desc {
+    font-size: var(--fs-sm);
+  }
+  .item:nth-child(3n + 1) .connector {
+    margin-left: 0;
+  }
+  .item:nth-child(3n) .connector {
+    margin-right: 0;
+  }
+}
 
-  .item {
-    scroll-snap-align: start;
+@media (max-width: 720px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    --col-gap: clamp(1rem, 2vw, 1.75rem);
+    row-gap: var(--s-8);
+  }
+  .item:nth-child(odd) .connector {
+    margin-left: 0;
+  }
+  .item:nth-child(even) .connector {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .list {
+    --node: 40px;
+    --stack-gap: var(--s-3);
+  }
+  .name {
+    font-size: var(--fs-base);
   }
 }
