@@ -3,19 +3,34 @@
   background: var(--cream-soft);
 }
 
-.timeline {
+/* Below the desktop breakpoint the rail overflows into a swipeable row, so the
+   scroll container is separated from the (relatively positioned) rail — the
+   connector has to scroll with the nodes, not stay pinned to the viewport. */
+.scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.rail {
+  --node: 46px;
+  --age-h: 1.6rem;
+  --row-gap: var(--s-4);
+
   position: relative;
+  padding-top: var(--s-2);
 }
 
 /* ---- Connector ---------------------------------------------------------- */
 
 .track {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  translate: -50% 0;
-  width: 2px;
+  left: 0;
+  right: 0;
+  /* Sits on the vertical centre of the node row. */
+  top: calc(var(--s-2) + var(--age-h) + var(--row-gap) + var(--node) / 2 - 1px);
+  height: 2px;
   border-radius: var(--r-full);
   background: var(--line-strong);
   overflow: hidden;
@@ -25,46 +40,60 @@
   display: block;
   width: 100%;
   height: 100%;
-  transform-origin: top;
-  background: linear-gradient(180deg, var(--brand-500), var(--accent-500));
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--brand-500), var(--accent-500));
 }
 
 /* ---- Items -------------------------------------------------------------- */
 
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 6), minmax(0, 1fr));
+  gap: clamp(1rem, 1.6vw, 1.75rem);
   margin: 0;
 }
 
 .item {
-  position: relative;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-rows: var(--age-h) var(--node) 1fr;
+  row-gap: var(--row-gap);
+  text-align: center;
 }
 
-/* Odd steps sit left of the line, even steps sit right. */
-.item:nth-child(odd) .card {
-  grid-column: 1;
-  justify-self: end;
-  text-align: right;
+.age {
+  margin: 0;
+  align-self: center;
+  font-family: var(--font-script);
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--accent-700);
 }
 
-.item:nth-child(even) .card {
-  grid-column: 3;
-  justify-self: start;
+/* ---- Node --------------------------------------------------------------- */
+
+.node {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: var(--node);
+  height: var(--node);
+  border-radius: var(--r-full);
+  background: var(--grad-brand);
+  color: var(--text-invert);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+  /* Ring is painted in the band colour so the connector reads as broken by the
+     node rather than passing behind it. */
+  box-shadow: 0 0 0 5px var(--cream-soft), var(--sh-brand);
+  z-index: 1;
 }
+
+/* ---- Card --------------------------------------------------------------- */
 
 .card {
-  max-width: 30rem;
-  width: 100%;
-}
-
-.cardInner {
-  padding: clamp(1.4rem, 2.6vw, 2rem);
+  height: 100%;
+  padding: clamp(1.1rem, 1.6vw, 1.5rem);
   border-radius: var(--r-lg);
   border: 1px solid var(--line);
   background: linear-gradient(165deg, var(--cream-soft) 0%, #fff 65%);
@@ -73,85 +102,47 @@
     border-color var(--t-base) var(--ease-out);
 }
 
-.cardInner:hover {
+.card:hover {
   transform: translateY(-4px);
   border-color: var(--brand-200);
   box-shadow: var(--sh-lg);
 }
 
-.step {
-  margin: 0 0 var(--s-2);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--brand-400);
-}
-
 .name {
   margin: 0;
-  font-size: var(--fs-h5);
-}
-
-.age {
-  margin: var(--s-1) 0 0;
-  font-family: var(--font-script);
-  font-size: 1.1rem;
-  color: var(--accent-700);
+  font-size: var(--fs-h6);
 }
 
 .desc {
   margin: var(--s-3) 0 0;
   font-size: var(--fs-sm);
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--text-muted);
-}
-
-/* ---- Node --------------------------------------------------------------- */
-
-.node {
-  grid-column: 2;
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: var(--r-full);
-  background: #fff;
-  /* Ring is painted in the band colour so the connector line reads as broken
-     by the node rather than passing behind it. */
-  box-shadow: 0 0 0 4px var(--cream-soft), 0 0 0 5px var(--line-strong);
-  z-index: 1;
-}
-
-.nodeDot {
-  width: 12px;
-  height: 12px;
-  border-radius: var(--r-full);
-  background: var(--grad-brand);
 }
 
 /* ---- Breakpoints -------------------------------------------------------- */
 
-@media (max-width: 860px) {
-  .track {
-    left: 11px;
-    translate: 0 0;
+@media (max-width: 900px) {
+  /* Bleed the swipeable rail to the screen edges so cards can scroll past the
+     container gutter instead of being clipped by it. */
+  .scroller {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    padding-bottom: var(--s-4);
+    scroll-snap-type: x mandatory;
   }
+
+  .rail {
+    min-width: max-content;
+  }
+
+  .list {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(17rem, 72vw);
+  }
+
   .item {
-    grid-template-columns: auto 1fr;
-    align-items: start;
-    gap: var(--s-5);
-  }
-  .item:nth-child(odd) .card,
-  .item:nth-child(even) .card {
-    grid-column: 2;
-    justify-self: stretch;
-    text-align: left;
-    max-width: none;
-  }
-  .node {
-    grid-column: 1;
-    grid-row: 1;
-    margin-top: 1.35rem;
+    scroll-snap-align: start;
   }
 }
