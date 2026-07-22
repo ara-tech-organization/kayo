@@ -36,7 +36,7 @@ const BLOCKS = [
       "Daily child-safe sanitisation",
       "Authorised-adult collection only",
     ],
-    image: IMAGES.safety,
+    image: IMAGES.parentMeeting,
     cta: { label: "Read our policies", to: "/policies" },
   },
   {
@@ -49,7 +49,7 @@ const BLOCKS = [
       "Parent-teacher meetings",
       "Monthly learning insights",
     ],
-    image: IMAGES.celebration,
+    image: IMAGES.welcomeFamily,
     cta: { label: "How we stay connected", to: "/family-connect" },
   },
 ];

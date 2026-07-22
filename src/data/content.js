@@ -17,6 +17,22 @@ export const IMAGES = {
     src: P("classroom"),
     alt: "A Montessori practical-life session at Kayo International Preschool, with child-friendly learning materials on open shelves",
   },
+  welcomeFamily: {
+    src: asset("/media/photos/welcome-family.webp"),
+    alt: "A Kayo International family with their child at the Welcome to School board on the Perungudi campus",
+  },
+  progNursery: {
+    src: asset("/media/photos/prog-nursery.webp"),
+    alt: "A Kayo International nursery child adding her handprint to a class art display",
+  },
+  progLkg: {
+    src: asset("/media/photos/prog-lkg.webp"),
+    alt: "Kayo International LKG children in uniform wearing the paper crowns they made",
+  },
+  progPrimary: {
+    src: asset("/media/photos/prog-primary.webp"),
+    alt: "Kayo International primary enrichment children on a sports-store field trip with their teachers",
+  },
   playgroup: {
     src: asset("/media/photos/playgroup.webp"),
     alt: "Kayo International playgroup children holding the teddy-bear crafts they made on Red Day",
@@ -246,7 +262,7 @@ export const PROGRAMMES = {
       age: "3 to 4 Years",
       short: "Montessori practical life and early numeracy.",
       desc: "In our nursery programme, children dive deeper into structured learning through the Montessori approach. Practical life skills, early numeracy, pre-writing activities, and language development form the core of this enriching year.",
-      image: IMAGES.classroom,
+      image: IMAGES.progNursery,
       highlights: ["Practical life skills", "Early numeracy", "Pre-writing"],
     },
     {
@@ -257,7 +273,7 @@ export const PROGRAMMES = {
       age: "4 to 5 Years",
       short: "Foundational literacy and numeracy through play.",
       desc: "Our LKG programme strengthens foundational literacy and numeracy through hands-on, play-based learning. Children explore science concepts, develop fine motor skills, and build the social confidence needed for formal schooling.",
-      image: IMAGES.learning,
+      image: IMAGES.progLkg,
       highlights: ["Play-based literacy", "Science concepts", "Fine motor skills"],
     },
     {
@@ -279,7 +295,7 @@ export const PROGRAMMES = {
       age: "6 to 12 Years",
       short: "Keeping learning alive beyond the classroom.",
       desc: "Our enrichment programme for 6 to 12 year olds keeps learning alive beyond the classroom. Through activity-based sessions, critical thinking exercises, and creative projects, children build communication, digital literacy, and problem-solving skills — staying curious, confident, and ready for new challenges.",
-      image: IMAGES.stem,
+      image: IMAGES.progPrimary,
       highlights: ["Critical thinking", "Digital literacy", "Creative projects"],
     },
   ],
