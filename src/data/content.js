@@ -11,7 +11,7 @@ const P = (name) => asset(`/media/photos/${name}.webp`);
 export const IMAGES = {
   hero: {
     src: P("hero"),
-    alt: "Children and parents enjoying a movement session at Kayo International Preschool, the best preschool in Perungudi, Chennai",
+    alt: "Kayo International teachers and children together in a classroom at the Perungudi campus, the best preschool in Chennai OMR",
   },
   classroom: {
     src: P("classroom"),

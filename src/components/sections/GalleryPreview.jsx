@@ -10,7 +10,7 @@ import styles from "./GalleryPreview.module.css";
 
 /* A five-tile mosaic — one hero tile spanning 2×2, then four supporting shots
    that flow into the remaining cells. */
-const TILES = [IMAGES.play, IMAGES.art, IMAGES.theatre, IMAGES.music, IMAGES.outdoor];
+const TILES = [IMAGES.art, IMAGES.play, IMAGES.theatre, IMAGES.music, IMAGES.outdoor];
 
 export default function GalleryPreview() {
   return (
